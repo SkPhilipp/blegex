@@ -1,4 +1,4 @@
-package com.hileco.blegex.sources.clipboard;
+package com.hileco.blegex.data.sources.clipboard;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,10 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
 
+/**
+ * An abstraction on the java libraries for managing the clipboard.
+ * Makes it easier to be notified on clipboard content changes.
+ */
 public abstract class ClipboardChangeListener implements ClipboardOwner, Runnable {
 
     private static final Integer CLIPBOARD_PAUSE = 250;

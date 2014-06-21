@@ -1,4 +1,4 @@
-package com.hileco.blegex.exceptions;
+package com.hileco.blegex.services.exceptions;
 
 import com.google.common.base.Charsets;
 import org.slf4j.Logger;

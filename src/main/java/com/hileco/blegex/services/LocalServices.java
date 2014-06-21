@@ -1,4 +1,4 @@
-package com.hileco.blegex;
+package com.hileco.blegex.services;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
