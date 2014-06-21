@@ -1,8 +1,8 @@
 package com.hileco.blegex;
 
-import com.hileco.blegex.services.exceptions.ExceptionHandler;
 import com.hileco.blegex.data.sources.clipboard.ClipboardSource;
 import com.hileco.blegex.services.LocalServices;
+import com.hileco.blegex.services.exceptions.ExceptionHandler;
 import org.codehaus.jackson.jaxrs.Annotations;
 import org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider;
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
@@ -48,7 +48,7 @@ public class Blegex {
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setDirectoriesListed(true);
         resourceHandler.setWelcomeFiles(new String[]{"index.html"});
-        resourceHandler.setResourceBase(".");
+        resourceHandler.setResourceBase("./src/main/webapp");
 
         // create server
         HandlerList handlers = new HandlerList();
