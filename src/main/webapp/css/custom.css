@@ -15,3 +15,7 @@
 .page-header a {
     color: black !important;
 }
+
+.row {
+    padding-bottom: 30px;
+}
