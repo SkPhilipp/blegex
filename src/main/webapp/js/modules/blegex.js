@@ -30,6 +30,18 @@ angular.module('blegex').config(function ($routeProvider) {
             controller: 'ConfigurationController',
             templateUrl: 'views/configuration.html'
         })
+        .when('/login', {
+            controller: 'LoginController',
+            templateUrl: 'views/login.html'
+        })
+        .when('/register', {
+            controller: 'RegisterController',
+            templateUrl: 'views/register.html'
+        })
+        .when('/logout', {
+            controller: 'LogoutController',
+            templateUrl: 'views/logout.html'
+        })
         .otherwise({
             redirectTo: '/'
         });

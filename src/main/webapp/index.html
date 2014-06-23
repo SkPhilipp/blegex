@@ -15,13 +15,17 @@
   <body data-ng-app="blegex">
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
           <h1 class="page-header"><a href="#/">Blegex</a>
-            <span class="pull-right">
+            <span class="pull-right" data-ng-hide="session.isSignedIn">
+              <a href="#/login" data-tooltip-placement="bottom" data-tooltip="Sign in"><span class="medium-octicon octicon-sign-in"></span></a>
+            </span>
+            <span class="pull-right" data-ng-show="session.isSignedIn">
               <a href="#/inbox" data-tooltip-placement="bottom" data-tooltip="Draft inbox"><span class="medium-octicon octicon-inbox"></span></a>
               <a href="#/draft" data-tooltip-placement="bottom" data-tooltip="Current draft"><span class="medium-octicon octicon-repo"></span></a>
               <a href="#/database" data-tooltip-placement="bottom" data-tooltip="Content database"><span class="medium-octicon octicon-database"></span></a>
               <a href="#/configuration" data-tooltip-placement="bottom" data-tooltip="Configuration"><span class="medium-octicon octicon-tools"></span></a>
+              <a href="#/logout" data-tooltip-placement="bottom" data-tooltip="Sign out"><span class="medium-octicon octicon-sign-out"></span></a>
             </span>
           </h1>
         </div>
