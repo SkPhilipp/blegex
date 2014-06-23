@@ -1,4 +1,4 @@
-angular.module('blegex', ['ngRoute']);
+angular.module('blegex', ['ngRoute', 'ui.bootstrap']);
 
 angular.module('blegex').config(function ($routeProvider) {
     $routeProvider
@@ -6,9 +6,29 @@ angular.module('blegex').config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/edit/:draftId', {
-            controller: 'EditController',
-            templateUrl: 'views/detail.html'
+        .when('/draft/:id', {
+            controller: 'DraftController',
+            templateUrl: 'views/draft.html'
+        })
+        .when('/draft', {
+            controller: 'DraftController',
+            templateUrl: 'views/draft.html'
+        })
+        .when('/inbox', {
+            controller: 'InboxController',
+            templateUrl: 'views/inbox.html'
+        })
+        .when('/database/:id', {
+            controller: 'DatabaseController',
+            templateUrl: 'views/database.html'
+        })
+        .when('/database', {
+            controller: 'DatabaseController',
+            templateUrl: 'views/database.html'
+        })
+        .when('/configuration', {
+            controller: 'ConfigurationController',
+            templateUrl: 'views/configuration.html'
         })
         .otherwise({
             redirectTo: '/'
@@ -18,6 +38,18 @@ angular.module('blegex').config(function ($routeProvider) {
 angular.module('blegex').controller('HomeController', function ($scope, $location) {
 });
 
-angular.module('blegex').controller('EditController', function ($scope, $location, $routeParams) {
-    // $routeParams.draftId;
+angular.module('blegex').controller('DraftController', function ($scope, $location, $routeParams) {
+    // $routeParams.id;
+});
+
+angular.module('blegex').controller('InboxController', function ($scope, $location, $routeParams) {
+    // $routeParams.id;
+});
+
+angular.module('blegex').controller('DatabaseController', function ($scope, $location, $routeParams) {
+    // $routeParams.id;
+});
+
+angular.module('blegex').controller('ConfigurationController', function ($scope, $location, $routeParams) {
+    // $routeParams.id;
 });

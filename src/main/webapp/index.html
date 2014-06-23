@@ -6,15 +6,24 @@
     <script src="js/lib/angular-route-1.3.0-beta.13.min.js"></script>
     <script src="js/lib/jquery-2.1.1.min.js"></script>
     <script src="js/lib/bootstrap-3.1.1.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.11.0.min.js"></script>
     <script src="js/modules/blegex.js"></script>
     <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet"/>
     <link href="css/octicons.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
   </head>
   <body data-ng-app="blegex">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="page-header">Blegex</h1>
+          <h1 class="page-header"><a href="#/">Blegex</a>
+            <span class="pull-right">
+              <a href="#/inbox" data-tooltip-placement="bottom" data-tooltip="Draft inbox"><span class="medium-octicon octicon-inbox"></span></a>
+              <a href="#/draft" data-tooltip-placement="bottom" data-tooltip="Current draft"><span class="medium-octicon octicon-repo"></span></a>
+              <a href="#/database" data-tooltip-placement="bottom" data-tooltip="Content database"><span class="medium-octicon octicon-database"></span></a>
+              <a href="#/configuration" data-tooltip-placement="bottom" data-tooltip="Configuration"><span class="medium-octicon octicon-tools"></span></a>
+            </span>
+          </h1>
         </div>
       </div>
       <div data-ng-view></div>
