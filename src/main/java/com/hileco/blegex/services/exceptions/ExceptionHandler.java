@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -26,7 +27,8 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
     @Override
     public Response toResponse(Exception exception) {
         RawException exceptionMessage = new RawException(exception);
-        if (exception instanceof IllegalArgumentException) {
+        if (exception instanceof IllegalArgumentException
+         || exception instanceof NotFoundException) {
             LOG.warn("{}: {}", exception.getClass().getSimpleName(), exception.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON_TYPE).entity(exceptionMessage).build();
         } else {
