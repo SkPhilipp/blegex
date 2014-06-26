@@ -1,4 +1,4 @@
-package com.hileco.blegex.data.sources;
+package com.hileco.blegex.server.data.sources;
 
 public interface ActiveSource extends Runnable {
 

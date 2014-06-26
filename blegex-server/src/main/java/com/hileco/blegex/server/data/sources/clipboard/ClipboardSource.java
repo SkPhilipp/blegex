@@ -1,6 +1,6 @@
-package com.hileco.blegex.data.sources.clipboard;
+package com.hileco.blegex.server.data.sources.clipboard;
 
-import com.hileco.blegex.data.sources.ActiveSource;
+import com.hileco.blegex.server.data.sources.ActiveSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
