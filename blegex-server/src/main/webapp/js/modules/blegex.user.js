@@ -1,4 +1,4 @@
-angular.module('blegex.user', []);
+angular.module('blegex.user', ['LocalStorageModule']);
 
 angular.module('blegex.user').config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
@@ -15,13 +15,13 @@ angular.module('blegex.user').factory('authInterceptor', function ($q, $rootScop
     };
 });
 
-angular.module('blegex.user').service('Authentication', function ($q) {
+angular.module('blegex.user').service('Authentication', function ($q, localStorageService) {
 
     var self = this;
 
-    self._token = null;
+    self._token = localStorageService.get('token') || null;
 
-    self.isSignedIn = false;
+    self.isSignedIn = localStorageService.get('isSignedIn') || false;
 
     /**
      * Logs the user in, returns a promise resolving when the authentication system successfully obtains a token, otherwise the promise is rejected.
@@ -36,6 +36,8 @@ angular.module('blegex.user').service('Authentication', function ($q) {
         deferred.resolve({});
         self._token = 'ASDF';
         self.isSignedIn = true;
+        localStorageService.set('token', self._token);
+        localStorageService.set('isSignedIn', self.isSignedIn);
         return deferred.promise;
     };
 
@@ -52,6 +54,8 @@ angular.module('blegex.user').service('Authentication', function ($q) {
         deferred.resolve({});
         self._token = 'ASDF';
         self.isSignedIn = true;
+        localStorageService.set('token', self._token);
+        localStorageService.set('isSignedIn', self.isSignedIn);
         return deferred.promise;
     };
 
@@ -61,6 +65,8 @@ angular.module('blegex.user').service('Authentication', function ($q) {
     self.logout = function () {
         self._token = null;
         self.isSignedIn = false;
+        localStorageService.set('token', self._token);
+        localStorageService.set('isSignedIn', self.isSignedIn);
     };
 
 });

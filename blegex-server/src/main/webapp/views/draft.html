@@ -1,5 +1,33 @@
 <div class="row">
   <div class="col-md-12">
-    <p class="lead">Draft</p>
+
+    <form role="form" class="form-horizontal">
+      <div data-ng-repeat="contentElement in contentElements" data-ng-switch="contentElement.element.type">
+
+        <div data-ng-switch-when="image" class="form-group">
+          <label class="control-label">{{ contentElement.element.filename }}</label>
+          <img ng-src="data:image/png;base64,{{ contentElement.element.content }}">
+        </div>
+
+        <div data-ng-switch-when="markdown" class="form-group">
+          <label class="control-label col-sm-2">Markdown</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" data-ng-model="contentElement.element.content"></textarea>
+          </div>
+        </div>
+
+        <div data-ng-switch-when="regex">
+          <h1>Regex</h1>
+          <textarea data-ng-model="contentElement.element.content"></textarea>
+        </div>
+
+        <div data-ng-switch-when="remote-image">
+          <h1>Remote Image</h1>
+          <p>Provider: {{ contentElement.element.provider }}</p>
+          <img data-ng-src="contentElement.element.url"/>
+        </div>
+
+      </div>
+    </form>
   </div>
 </div>

@@ -1,24 +1,17 @@
 package com.hileco.blegex.server.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 // TODO: Assign users an "active" draft
-@Entity
+@Document(indexName = "user", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
 public class User {
 
     @Id
-    @Column(name = "id", nullable = false, updatable = false)
-    @NotNull
-    @Size(max = 64)
     private String id;
 
-    @Column(name = "password", nullable = false)
-    @NotNull
-    @Size(max = 64)
+    private String username;
+
     private String password;
 
     public String getId() {
@@ -27,6 +20,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

@@ -31,16 +31,7 @@
         <!-- Persistence -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>runtime</scope>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <!-- Guava -->
         <dependency>

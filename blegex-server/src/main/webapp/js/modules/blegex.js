@@ -1,4 +1,4 @@
-angular.module('blegex', ['ngRoute', 'ui.bootstrap', 'blegex.user', 'blegex.ui']);
+angular.module('blegex', ['ngRoute', 'ui.bootstrap', 'blegex.user', 'blegex.ui', 'blegex.resources']);
 
 /**
  * Puts both UI and Authentication on the $rootScope for easy referencing from the views.
@@ -61,10 +61,16 @@ angular.module('blegex').controller('HomeController', function ($scope, $locatio
 angular.module('blegex').controller('InboxController', function ($scope) {
 });
 
-angular.module('blegex').controller('DraftController', function ($scope, $routeParams) {
+angular.module('blegex').controller('DraftController', function ($scope, $routeParams, ContentElement) {
+
+    $scope.contentElements = ContentElement.query();
+
 });
 
-angular.module('blegex').controller('DatabaseController', function ($scope, $routeParams) {
+angular.module('blegex').controller('DatabaseController', function ($scope, $routeParams, ContentGroup) {
+
+    $scope.contentGroups = ContentGroup.query();
+
 });
 
 angular.module('blegex').controller('ConfigurationController', function ($scope, $routeParams) {

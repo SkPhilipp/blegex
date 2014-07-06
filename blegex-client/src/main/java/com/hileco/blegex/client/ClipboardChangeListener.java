@@ -1,8 +1,9 @@
-package com.hileco.blegex.server.data.sources.clipboard;
+package com.hileco.blegex.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -23,6 +24,7 @@ public abstract class ClipboardChangeListener implements ClipboardOwner, Runnabl
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     }
 
+    @PostConstruct
     public void run() {
         Transferable transferable = clipboard.getContents(this);
         regainOwnership(transferable);

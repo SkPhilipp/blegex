@@ -1,15 +1,16 @@
-package com.hileco.blegex.server.data.sources.clipboard;
+package com.hileco.blegex.client;
 
-import com.hileco.blegex.server.data.sources.ActiveSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
-public class ClipboardSource extends ClipboardChangeListener implements ActiveSource {
+@Component
+public class ClipboardSource extends ClipboardChangeListener {
 
     private static final Logger LOG = LoggerFactory.getLogger(ClipboardSource.class);
 

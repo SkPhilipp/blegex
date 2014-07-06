@@ -16,6 +16,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>blegex-server</module>
+        <module>blegex-client</module>
     </modules>
 
     <properties>
