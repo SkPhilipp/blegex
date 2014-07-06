@@ -97,22 +97,32 @@ angular.module('blegex').controller('DatabaseController', function ($scope, $rou
 angular.module('blegex').controller('ConfigurationController', function ($scope, $routeParams) {
 });
 
-angular.module('blegex').controller('LoginController', function ($scope, $location, Authentication) {
+angular.module('blegex').controller('LoginController', function ($scope, $location, Authentication, User) {
 
     $scope.login = function (form) {
-        Authentication.login(form.email.$modelValue, form.password.$modelValue)
-            .then(function () {
+        var user = new User({
+            username: form.email.$modelValue,
+            password:  form.password.$modelValue
+        });
+        user.$verify()
+            .then(function(){
+                Authentication.login(form.email.$modelValue, form.password.$modelValue);
                 $location.path('/inbox');
             });
     };
 
 });
 
-angular.module('blegex').controller('RegisterController', function ($scope, $location, Authentication) {
+angular.module('blegex').controller('RegisterController', function ($scope, $location, Authentication, User) {
 
     $scope.register = function (form) {
-        Authentication.login(form.email.$modelValue, form.password.$modelValue)
+        var user = new User({
+            username: form.email.$modelValue,
+            password:  form.password.$modelValue
+        });
+        user.$save()
             .then(function () {
+                Authentication.login(form.email.$modelValue, form.password.$modelValue);
                 $location.path('/inbox');
             });
     };

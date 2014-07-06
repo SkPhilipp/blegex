@@ -7,8 +7,12 @@ angular.module('blegex.user').config(function ($httpProvider) {
 angular.module('blegex.user').factory('authInterceptor', function ($q, $rootScope, Authentication) {
     return {
         request: function (config) {
-            if (Authentication._authorization) {
-                config.headers['Authorization'] = Authentication._authorization;
+            // if the request url is /.?services\/.*/
+            var index = config.url.indexOf('services/');
+            if(index == 0 || index == 1){
+                if (Authentication._authorization) {
+                    config.headers['Authorization'] = Authentication._authorization;
+                }
             }
             return config || $q.when(config);
         }
@@ -24,39 +28,16 @@ angular.module('blegex.user').service('Authentication', function ($q, localStora
     self.isSignedIn = localStorageService.get('isSignedIn') || false;
 
     /**
-     * Logs the user in, returns a promise resolving when the authentication system successfully obtains a authorization, otherwise the promise is rejected.
+     * Cofigures authentication to use the given credentials on service requests.
      *
      * @param email
      * @param password
-     * @returns {promise}
      */
     self.login = function (email, password) {
-        // TODO: actually log the user in and get a authorization, store the authorization in local storage
-        var deferred = $q.defer();
-        deferred.resolve({});
         self._authorization = 'Basic ' + window.btoa(email + ':' + password);
         self.isSignedIn = true;
         localStorageService.set('authorization', self._authorization);
         localStorageService.set('isSignedIn', self.isSignedIn);
-        return deferred.promise;
-    };
-
-    /**
-     * Registers the user, returns a promise resolving when the authentication system successfully obtains a authorization, otherwise the promise is rejected.
-     *
-     * @param email
-     * @param password
-     * @returns {promise}
-     */
-    self.register = function (email, password) {
-        // TODO: actually log the user in and get a authorization, store the authorization in local storage
-        var deferred = $q.defer();
-        deferred.resolve({});
-        self._authorization = 'Basic ' + window.btoa(email + ':' + password);
-        self.isSignedIn = true;
-        localStorageService.set('authorization', self._authorization);
-        localStorageService.set('isSignedIn', self.isSignedIn);
-        return deferred.promise;
     };
 
     /**
