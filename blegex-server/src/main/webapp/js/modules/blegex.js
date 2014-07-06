@@ -58,12 +58,33 @@ angular.module('blegex').config(function ($routeProvider) {
 angular.module('blegex').controller('HomeController', function ($scope, $location) {
 });
 
-angular.module('blegex').controller('InboxController', function ($scope) {
+angular.module('blegex').controller('InboxController', function ($scope, ContentElement) {
+
+    $scope.contentElements = ContentElement.query();
+
 });
 
 angular.module('blegex').controller('DraftController', function ($scope, $routeParams, ContentElement) {
 
     $scope.contentElements = ContentElement.query();
+
+    /**
+     * Exports the content elements using a given export type.
+     *
+     * @param {String} exporter server side export-type
+     */
+    $scope.exports = function(exporter){
+        switch(exporter) {
+            case 'markdown':
+                break;
+            case 'html':
+                break;
+            case 'google-drive':
+                break;
+            case 'ghost':
+                break;
+        }
+    };
 
 });
 
@@ -79,7 +100,7 @@ angular.module('blegex').controller('ConfigurationController', function ($scope,
 angular.module('blegex').controller('LoginController', function ($scope, $location, Authentication) {
 
     $scope.login = function (form) {
-        Authentication.login(form.email, form.password)
+        Authentication.login(form.email.$modelValue, form.password.$modelValue)
             .then(function () {
                 $location.path('/inbox');
             });
@@ -90,7 +111,7 @@ angular.module('blegex').controller('LoginController', function ($scope, $locati
 angular.module('blegex').controller('RegisterController', function ($scope, $location, Authentication) {
 
     $scope.register = function (form) {
-        Authentication.login(form.email, form.password)
+        Authentication.login(form.email.$modelValue, form.password.$modelValue)
             .then(function () {
                 $location.path('/inbox');
             });

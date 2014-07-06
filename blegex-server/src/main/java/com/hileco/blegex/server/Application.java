@@ -1,7 +1,5 @@
 package com.hileco.blegex.server;
 
-import com.hileco.blegex.server.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,9 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 public class Application extends SpringBootServletInitializer {
-
-    @Autowired
-	private UserRepository userRepository;
 
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);

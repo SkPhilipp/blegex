@@ -28,10 +28,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Iterable<User> getUsers() {
-        //        User user = new User();
-        //        user.setUsername("sanic");
-        //        user.setPassword("g0f4st");
-        //        userRepository.save(user);
         return userRepository.findAll();
     }
 

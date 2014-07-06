@@ -4,6 +4,7 @@ import com.hileco.blegex.server.model.ContentGroup;
 import com.hileco.blegex.server.repository.ContentGroupRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import java.util.Iterator;
 
 @RestController
 @RequestMapping("/services/content/groups")
+@PreAuthorize("isAuthenticated()")
 public class ContentGroupController {
 
     private final ContentGroupRepository contentGroupRepository;

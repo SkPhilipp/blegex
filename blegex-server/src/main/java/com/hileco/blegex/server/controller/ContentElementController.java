@@ -4,6 +4,7 @@ import com.hileco.blegex.server.model.ContentElement;
 import com.hileco.blegex.server.repository.ContentElementRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import java.util.Iterator;
 
 @RestController
 @RequestMapping("/services/content/elements")
+@PreAuthorize("isAuthenticated()")
 public class ContentElementController {
 
     private final ContentElementRepository contentElementRepository;
