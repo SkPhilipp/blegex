@@ -14,29 +14,9 @@ angular.module('blegex').config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: 'views/home.html'
         })
-        .when('/draft/:id', {
-            controller: 'DraftController',
-            templateUrl: 'views/draft.html'
-        })
-        .when('/draft', {
-            controller: 'DraftController',
-            templateUrl: 'views/draft.html'
-        })
-        .when('/inbox', {
-            controller: 'InboxController',
-            templateUrl: 'views/inbox.html'
-        })
-        .when('/database/:id', {
-            controller: 'DatabaseController',
-            templateUrl: 'views/database.html'
-        })
-        .when('/database', {
-            controller: 'DatabaseController',
-            templateUrl: 'views/database.html'
-        })
-        .when('/configuration', {
-            controller: 'ConfigurationController',
-            templateUrl: 'views/configuration.html'
+        .when('/documents', {
+            controller: 'DocumentsController',
+            templateUrl: 'views/documents.html'
         })
         .when('/login', {
             controller: 'LoginController',
@@ -55,46 +35,10 @@ angular.module('blegex').config(function ($routeProvider) {
         });
 });
 
-angular.module('blegex').controller('HomeController', function ($scope, $location) {
+angular.module('blegex').controller('HomeController', function ($scope) {
 });
 
-angular.module('blegex').controller('InboxController', function ($scope, ContentElement) {
-
-    $scope.contentElements = ContentElement.query();
-
-});
-
-angular.module('blegex').controller('DraftController', function ($scope, $routeParams, ContentElement) {
-
-    $scope.contentElements = ContentElement.query();
-
-    /**
-     * Exports the content elements using a given export type.
-     *
-     * @param {String} exporter server side export-type
-     */
-    $scope.exports = function(exporter){
-        switch(exporter) {
-            case 'markdown':
-                break;
-            case 'html':
-                break;
-            case 'google-drive':
-                break;
-            case 'ghost':
-                break;
-        }
-    };
-
-});
-
-angular.module('blegex').controller('DatabaseController', function ($scope, $routeParams, ContentGroup) {
-
-    $scope.contentGroups = ContentGroup.query();
-
-});
-
-angular.module('blegex').controller('ConfigurationController', function ($scope, $routeParams) {
+angular.module('blegex').controller('DocumentsController', function ($scope) {
 });
 
 angular.module('blegex').controller('LoginController', function ($scope, $location, Authentication, User) {
@@ -102,10 +46,10 @@ angular.module('blegex').controller('LoginController', function ($scope, $locati
     $scope.login = function (form) {
         var user = new User({
             username: form.email.$modelValue,
-            password:  form.password.$modelValue
+            password: form.password.$modelValue
         });
         user.$verify()
-            .then(function(){
+            .then(function () {
                 Authentication.login(form.email.$modelValue, form.password.$modelValue);
                 $location.path('/inbox');
             });
@@ -118,7 +62,7 @@ angular.module('blegex').controller('RegisterController', function ($scope, $loc
     $scope.register = function (form) {
         var user = new User({
             username: form.email.$modelValue,
-            password:  form.password.$modelValue
+            password: form.password.$modelValue
         });
         user.$save()
             .then(function () {

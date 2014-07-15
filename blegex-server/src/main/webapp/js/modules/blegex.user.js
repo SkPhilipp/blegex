@@ -1,24 +1,5 @@
 angular.module('blegex.user', ['LocalStorageModule']);
 
-angular.module('blegex.user').config(function ($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptor');
-});
-
-angular.module('blegex.user').factory('authInterceptor', function ($q, $rootScope, Authentication) {
-    return {
-        request: function (config) {
-            // if the request url is /.?services\/.*/
-            var index = config.url.indexOf('services/');
-            if(index == 0 || index == 1){
-                if (Authentication._authorization) {
-                    config.headers['Authorization'] = Authentication._authorization;
-                }
-            }
-            return config || $q.when(config);
-        }
-    };
-});
-
 angular.module('blegex.user').service('Authentication', function ($q, localStorageService) {
 
     var self = this;
@@ -50,4 +31,23 @@ angular.module('blegex.user').service('Authentication', function ($q, localStora
         localStorageService.set('isSignedIn', self.isSignedIn);
     };
 
+});
+
+angular.module('blegex.user').config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+});
+
+angular.module('blegex.user').factory('authInterceptor', function ($q, $rootScope, Authentication) {
+    return {
+        request: function (config) {
+            // if the request url is /.?services\/.*/
+            var index = config.url.indexOf('services/');
+            if(index == 0 || index == 1){
+                if (Authentication._authorization) {
+                    config.headers['Authorization'] = Authentication._authorization;
+                }
+            }
+            return config || $q.when(config);
+        }
+    };
 });

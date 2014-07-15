@@ -1,13 +1,15 @@
-package com.hileco.blegex.server.model;
+package com.hileco.blegex.core.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-// TODO: Assign users an "active" draft
-@Document(indexName = "user", type = "user", shards = 1, replicas = 0, refreshInterval = "-1")
+@Entity
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String username;

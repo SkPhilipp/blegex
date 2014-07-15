@@ -1,7 +1,7 @@
 package com.hileco.blegex.server.controller;
 
-import com.hileco.blegex.server.model.User;
-import com.hileco.blegex.server.repository.UserRepository;
+import com.hileco.blegex.core.model.User;
+import com.hileco.blegex.core.repository.jpa.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,12 +14,12 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/services/users")
-public class UserController {
+public class UserService {
 
     private final UserRepository userRepository;
 
     @Inject
-    public UserController(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

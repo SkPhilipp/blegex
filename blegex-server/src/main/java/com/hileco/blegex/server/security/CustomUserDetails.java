@@ -1,7 +1,7 @@
 package com.hileco.blegex.server.security;
 
 import com.google.common.collect.Lists;
-import com.hileco.blegex.server.model.User;
+import com.hileco.blegex.core.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
