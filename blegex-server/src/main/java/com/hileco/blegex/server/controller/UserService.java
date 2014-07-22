@@ -1,7 +1,7 @@
 package com.hileco.blegex.server.controller;
 
 import com.hileco.blegex.core.model.User;
-import com.hileco.blegex.core.repository.jpa.UserRepository;
+import com.hileco.blegex.core.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,11 +44,6 @@ public class UserService {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(HttpStatus.OK);
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Iterable<User> getUsers() {
-        return userRepository.findAll();
     }
 
 }

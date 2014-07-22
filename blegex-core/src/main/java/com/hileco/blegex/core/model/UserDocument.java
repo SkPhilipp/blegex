@@ -1,21 +1,23 @@
 package com.hileco.blegex.core.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-@Document(indexName = "userdocument", type = "userdocument", shards = 1, replicas = 0, refreshInterval = "-1")
+@Entity
 public class UserDocument {
 
-    @Id
-    private String id;
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private String content;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

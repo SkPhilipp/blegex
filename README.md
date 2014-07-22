@@ -3,7 +3,6 @@ blegex
 
 - Spring Boot
 - Spring Data JPA
-- Spring Data ElasticSearch
 - Spring Security
 - AngularJS
 - AngularJS ngRoute

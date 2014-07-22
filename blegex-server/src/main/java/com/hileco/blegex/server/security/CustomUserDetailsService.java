@@ -1,7 +1,7 @@
 package com.hileco.blegex.server.security;
 
 import com.hileco.blegex.core.model.User;
-import com.hileco.blegex.core.repository.jpa.UserRepository;
+import com.hileco.blegex.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetailsService;
